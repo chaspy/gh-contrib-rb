@@ -1,6 +1,7 @@
 require "gh/contrib"
 require "thor"
 require 'net/https'
+require 'json'
 
 class CLI < Thor
   desc "report your contribution","-u <user>"
@@ -30,9 +31,21 @@ class CLI < Thor
     https.verify_mode = OpenSSL::SSL::VERIFY_NONE
     https.start {
       response = https.get(path)
-      puts response.body
+      result = JSON.parse(response.body)
+
+      puts "Hi #{u}, this is your contribution report :tada: in #{terms}"
+      puts "# Pull Request"
+      puts "your created and merged pull request is #{result['total_count']}!!"
+      puts ""
+
+      result['items'].each { |i|
+        puts i['title']
+        puts i['html_url']
+        puts ""
+      }
+
     }
 
-    puts "hello, #{options[:user]}. Get your contribution from #{options[:start]} to #{options[:end]}"
+
   end
 end
