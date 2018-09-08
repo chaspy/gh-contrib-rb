@@ -26,7 +26,11 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+    $ bundle exec exe/gh-contrib report -u <GitHub user name> -s YYYY-MM-DD -e YYYY-MM-DD
+
+If you get the report includes the private repository, please set environment variable:
+
+    $ export GHCONTRIB_TOKEN="<your access token>"
 
 ## Development
 
