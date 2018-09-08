@@ -1,4 +1,5 @@
 require "gh/contrib/version"
+require "gh/contrib/cli"
 
 module Gh
   module Contrib
