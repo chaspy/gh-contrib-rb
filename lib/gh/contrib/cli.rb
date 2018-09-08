@@ -28,6 +28,7 @@ class CLI < Thor
     uri = URI('https://api.github.com' + path)
 
     req = Net::HTTP::Get.new(uri)
+    req['Authorization'] = 'token ' + ENV['GHCONTRIB_TOKEN'] if !ENV['GHCONTRIB_TOKEN'].empty?
 
     response = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') { |http|
       http.request(req)
