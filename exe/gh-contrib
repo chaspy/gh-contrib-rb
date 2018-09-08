@@ -2,4 +2,4 @@
 
 require "gh/contrib"
 
-Hello::CLI.start
+CLI.start
