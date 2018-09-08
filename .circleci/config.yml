@@ -1,0 +1,10 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/ruby:2.5.1
+    working_directory: /home/circleci/gh-contirb
+    steps:
+      - checkout
+      - run: bundle install
+      - run: ./script/test.sh
