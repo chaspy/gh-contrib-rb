@@ -3,9 +3,10 @@ require "thor"
 
 module Hello
   class CLI < Thor
-    desc "hello sample","str"
-    def hello(str)
-      puts "hello, #{str}"
+    desc "report your contribution","-u <user>"
+    option :user, type: :string, aliases: '-u', desc: 'GitHub user name'
+    def report
+      puts "hello, #{options[:user]}"
     end
   end
 end
