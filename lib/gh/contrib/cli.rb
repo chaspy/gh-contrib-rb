@@ -29,23 +29,22 @@ class CLI < Thor
     https = Net::HTTP.new('api.github.com',443)
     https.use_ssl = true
     https.verify_mode = OpenSSL::SSL::VERIFY_NONE
-    https.start {
-      response = https.get(path)
-      result = JSON.parse(response.body)
 
-      puts "Hi #{u}, this is your contribution report :tada: in #{terms}"
-      puts "# Pull Request"
-      puts "your created and merged pull request is #{result['total_count']}!!"
-      puts ""
-
-      result['items'].each { |i|
-        puts i['title']
-        puts i['html_url']
-        puts ""
-      }
-
+    response = https.start { |http|
+      http.get(path)
     }
+    result = JSON.parse(response.body)
 
+    puts "Hi #{u}, this is your contribution report :tada: in #{terms}"
+    puts "# Pull Request"
+    puts "your created and merged pull request is #{result['total_count']}!!"
+    puts ""
 
+    result['items'].each { |i|
+      puts i['title']
+      puts i['html_url']
+      puts ""
+    }
+    
   end
 end
