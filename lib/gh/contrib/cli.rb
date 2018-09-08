@@ -25,14 +25,14 @@ class CLI < Thor
 
     terms = "#{s}"+".."+"#{e}"
     path = "/search/issues?q=type:pr+in:body+is:merged+merged:#{terms}+author:#{u}&per_page=100"
+    uri = URI('https://api.github.com' + path)
 
-    https = Net::HTTP.new('api.github.com',443)
-    https.use_ssl = true
-    https.verify_mode = OpenSSL::SSL::VERIFY_NONE
+    req = Net::HTTP::Get.new(uri)
 
-    response = https.start { |http|
-      http.get(path)
+    response = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') { |http|
+      http.request(req)
     }
+
     result = JSON.parse(response.body)
 
     puts "Hi #{u}, this is your contribution report :tada: in #{terms}"
