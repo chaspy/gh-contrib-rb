@@ -4,7 +4,7 @@ require 'net/https'
 require 'json'
 
 class CLI < Thor
-  desc "report your contribution","-u <user>"
+  desc "report your contribution","--user <user name> --start <YYYY-MM-DD> --end <YYYY-MM-DD>"
   option :user, type: :string, aliases: '-u', desc: 'GitHub user name'
   option :start, type: :string, aliases: '-s', desc: 'Start date to get your contribution'
   option :end, type: :string, aliases: '-e', desc: 'End date to get your contribution'
