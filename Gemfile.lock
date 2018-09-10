@@ -60,7 +60,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  aruba
+  aruba (~> 0.14.6)
   bundler (~> 1.16)
   gh-contrib!
   rake (~> 10.0)
