@@ -7,4 +7,5 @@ jobs:
     steps:
       - checkout
       - run: bundle install
+      - run: bundle exec rspec
       - run: ./script/test.sh
