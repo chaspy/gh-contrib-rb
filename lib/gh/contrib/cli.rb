@@ -34,6 +34,12 @@ class CLI < Thor
       http.request(req)
     }
 
+    if response.code != "200" then
+      puts "Get error from GitHub"
+      puts "#{response.code} #{response.message}"
+      exit
+    end
+    
     result = JSON.parse(response.body)
 
     puts "Hi #{u}, this is your contribution report :tada: in #{terms}"
