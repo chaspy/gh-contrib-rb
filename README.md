@@ -1,7 +1,13 @@
 # Gh::Contrib
 [![CircleCI](https://circleci.com/gh/chaspy/gh-contrib/tree/master.svg?style=svg)][status]
+[![GitHub release](https://img.shields.io/github/release/chaspy/gh-contrib/all.svg?style=flat-square)][release]
+[![Gem Version](https://badge.fury.io/rb/gh-contrib.svg)][gem]
+[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)][license]
 
 [status]: https://circleci.com/gh/chaspy/gh-contrib
+[release]: https://github.com/chaspy/gh-contrib/releases
+[gem]: https://badge.fury.io/rb/gh-contrib
+[license]: https://github.com/chaspy/gh-contrib/blob/master/LICENSE
 
 
 Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/gh/contrib`. To experiment with that code, run `bin/console` for an interactive prompt.
