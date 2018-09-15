@@ -2,6 +2,20 @@ RSpec.describe Gh::Contrib do
   it "has a version number" do
     expect(Gh::Contrib::VERSION).not_to be nil
   end
+
+  before(:each) { @cli = CLI.new }
+
+  context 'validation success' do
+    it {expect(@cli.send(:validate,"chaspy","2018-08-21","2018-08-31")).to eq(true) }
+  end
+
+  context 'validation success' do
+    it {expect(@cli.send(:validate,"chaspy","2018-08-211","2018-08-31")).to eq(false) }
+  end
+
+  context 'validation success' do
+    it {expect(@cli.send(:validate,"chaspy","2018-08-21","2018-08-311")).to eq(false) }
+  end
 end
 
 RSpec.describe 'gh-contrib command', type: :aruba do
