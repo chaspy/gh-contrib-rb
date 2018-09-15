@@ -1,11 +1,30 @@
 version: 2
 jobs:
-  build:
+  test2.3.0:
     docker:
-      - image: circleci/ruby:2.5.1
+      - image: ruby:2.3.0
     working_directory: /home/circleci/gh-contirb
     steps:
       - checkout
-      - run: bundle install
-      - run: bundle exec rspec
       - run: ./script/test.sh
+  test2.4.0:
+    docker:
+      - image: ruby:2.4.0
+    working_directory: /home/circleci/gh-contirb
+    steps:
+      - checkout
+      - run: ./script/test.sh
+  test2.5.0:
+    docker:
+      - image: ruby:2.5.0
+    working_directory: /home/circleci/gh-contirb
+    steps:
+      - checkout
+      - run: ./script/test.sh
+workflows:
+  version: 2
+  test_multiple ruby version:
+    jobs:
+      - test2.3.0
+      - test2.4.0
+      - test2.5.0
