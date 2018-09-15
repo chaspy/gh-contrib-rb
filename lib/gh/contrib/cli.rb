@@ -9,19 +9,11 @@ class CLI < Thor
   option :start, type: :string, aliases: '-s', desc: 'Start date to get your contribution'
   option :end, type: :string, aliases: '-e', desc: 'End date to get your contribution'
   def report
-    # validate arguments
     u = options[:user]
     s = options[:start]
     e = options[:end]
-    if u.empty?
-      return false
-    elsif !s.match(/\d{4}-\d{2}-\d{2}/)
-      return false
-    elsif !e.match(/\d{4}-\d{2}-\d{2}/)
-      return false
-    else
-      true
-    end
+
+    exit if !validate(u,s,e)
 
     terms = "#{s}"+".."+"#{e}"
     path = "/search/issues?q=type:pr+in:body+is:merged+merged:#{terms}+author:#{u}&per_page=100"
@@ -52,6 +44,18 @@ class CLI < Thor
       puts i['html_url']
       puts ""
     }
-    
+  end
+
+  private
+  def validate(u,s,e)
+    if u.empty?
+      return false
+    elsif !s.match(/\d{4}-\d{2}-\d{2}/)
+      return false
+    elsif !e.match(/\d{4}-\d{2}-\d{2}/)
+      return false
+    else
+      true
+    end
   end
 end
