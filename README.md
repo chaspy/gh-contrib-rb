@@ -9,10 +9,7 @@
 [gem]: https://badge.fury.io/rb/gh-contrib
 [license]: https://github.com/chaspy/gh-contrib/blob/master/LICENSE
 
-
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/gh/contrib`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Show your contribution for a specific time period.
 
 ## Installation
 
@@ -37,6 +34,21 @@ Or install it yourself as:
 If you get the report includes the private repository, please set environment variable:
 
     $ export GHCONTRIB_TOKEN="<your access token>"
+
+## Example
+
+```
+ $ gh-contrib report -u chaspy -s 2018-09-13 -e 2018-09-14
+Hi chaspy, this is your contribution report :tada: in 2018-09-13..2018-09-14
+# Pull Request
+your created and merged pull request is 2!!
+
+Add badges
+https://github.com/chaspy/gh-contrib/pull/11
+
+Exit when get abnormal status code
+https://github.com/chaspy/gh-contrib/pull/10
+```
 
 ## Development
 
