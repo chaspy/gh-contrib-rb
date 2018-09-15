@@ -48,11 +48,9 @@ class CLI < Thor
 
   private
   def validate(u,s,e)
-    if u.empty?
+    if !s.match(/^\d{4}-\d{2}-\d{2}$/)
       return false
-    elsif !s.match(/\d{4}-\d{2}-\d{2}/)
-      return false
-    elsif !e.match(/\d{4}-\d{2}-\d{2}/)
+    elsif !e.match(/^\d{4}-\d{2}-\d{2}$/)
       return false
     else
       true
